@@ -21,7 +21,9 @@
     --muted: #555555;
     --border: #c0cdd9;
     --rosso: #b52222;
+    --rosso-bg: #fce8e8;
     --verde: #1a6e3e;
+    --verde-bg: #e4f5ec;
   }
 
   html, body {
@@ -33,279 +35,269 @@
     overscroll-behavior: none;
   }
 
-  body {
-    max-width: 480px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
+  body { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; }
 
   /* TOPBAR */
   .topbar {
     background: var(--blu-scuro);
     padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0; position: sticky; top: 0; z-index: 10;
   }
-
-  .topbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
+  .topbar-brand { display: flex; align-items: center; gap: 10px; }
   .logo-box {
-    width: 32px;
-    height: 32px;
-    background: var(--giallo);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 32px; height: 32px; background: var(--giallo);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
   }
+  .topbar-name { font-size: 17px; font-weight: 700; color: #fff; }
+  .topbar-sub { font-size: 12px; color: var(--giallo); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 
-  .topbar-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.02em;
-  }
-
-  .topbar-sub {
-    font-size: 12px;
-    color: var(--giallo);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* ===== SETUP ===== */
-  #screen-setup {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .setup-hero {
-    background: var(--blu);
-    padding: 28px 24px 24px;
-  }
-
-  .setup-hero h1 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.3;
-    margin-bottom: 6px;
-  }
-
-  .setup-hero p {
-    font-size: 17px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.4;
-  }
-
-  .setup-body {
-    flex: 1;
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  /* SETUP */
+  #screen-setup { flex: 1; display: flex; flex-direction: column; }
+  .setup-hero { background: var(--blu); padding: 28px 24px 24px; }
+  .setup-hero h1 { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 6px; }
+  .setup-hero p { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+  .setup-body { flex: 1; padding: 28px 24px; display: flex; flex-direction: column; }
 
   .big-label {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
+    font-size: 15px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
   }
 
   .input-grande {
-    background: var(--bianco);
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    transition: border-color 0.15s;
+    background: var(--bianco); border: 2px solid var(--border);
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px; transition: border-color 0.15s;
   }
   .input-grande:focus-within { border-color: var(--blu); }
   .input-grande.errore { border-color: var(--rosso); }
-
-  .input-grande .simbolo {
-    font-size: 36px;
-    font-weight: 400;
-    color: var(--muted);
-    line-height: 1;
-  }
+  .input-grande .simbolo { font-size: 36px; color: var(--muted); line-height: 1; }
 
   #setup-input {
-    background: transparent;
-    border: none;
-    outline: none;
+    background: transparent; border: none; outline: none;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 42px;
-    font-weight: 400;
-    color: var(--testo);
-    width: 100%;
-    -moz-appearance: textfield;
+    font-size: 42px; font-weight: 400; color: var(--testo);
+    width: 100%; -moz-appearance: textfield;
   }
   #setup-input::-webkit-inner-spin-button,
   #setup-input::-webkit-outer-spin-button { -webkit-appearance: none; }
   #setup-input::placeholder { color: #ccd4dc; }
 
   .info-box {
-    background: #fffbe6;
-    border-left: 4px solid var(--giallo-scuro);
-    border-radius: 0 10px 10px 0;
-    padding: 14px 16px;
-    margin-bottom: 28px;
+    background: #fffbe6; border-left: 4px solid var(--giallo-scuro);
+    border-radius: 0 10px 10px 0; padding: 14px 16px; margin-bottom: 28px;
   }
-  .info-box p {
-    font-size: 15px;
-    color: #4a3c00;
-    line-height: 1.6;
-  }
+  .info-box p { font-size: 15px; color: #4a3c00; line-height: 1.6; }
 
   .btn-grande {
-    background: var(--giallo);
-    color: var(--blu-scuro);
-    border: none;
-    border-radius: 12px;
-    padding: 20px;
+    background: var(--giallo); color: var(--blu-scuro); border: none;
+    border-radius: 12px; padding: 20px;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    width: 100%;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    -webkit-tap-highlight-color: transparent;
-    transition: background 0.15s;
+    font-size: 20px; font-weight: 700; cursor: pointer;
+    width: 100%; text-transform: uppercase; letter-spacing: 0.04em;
+    -webkit-tap-highlight-color: transparent; transition: background 0.15s;
   }
   .btn-grande:active { background: var(--giallo-scuro); }
 
-  /* ===== MAIN ===== */
-  #screen-main {
-    display: none;
-    flex-direction: column;
-    flex: 1;
+  /* SALDO HERO */
+  .saldo-hero { background: var(--blu); padding: 24px 24px 0; flex-shrink: 0; }
+
+  .saldo-top-row {
+    display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 6px;
   }
 
-  /* Saldo hero */
-  .saldo-hero {
-    background: var(--blu);
-    padding: 24px 24px 0;
-    flex-shrink: 0;
-  }
+  .saldo-label-col { display: flex; flex-direction: column; }
 
   .saldo-label {
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 6px;
-    font-weight: 600;
+    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 6px; font-weight: 600;
   }
 
   #display-saldo {
-    font-size: 58px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -1px;
-    line-height: 1;
-    margin-bottom: 6px;
-    transition: color 0.3s;
+    font-size: 54px; font-weight: 700; color: #fff;
+    letter-spacing: -1px; line-height: 1; transition: color 0.3s;
   }
 
-  .saldo-avviso {
-    font-size: 15px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 16px;
-    min-height: 22px;
-  }
-
-  .barra-track {
-    height: 6px;
-    background: rgba(255,255,255,0.15);
-    margin: 0 -24px;
-  }
-
-  #barra-fill {
-    height: 6px;
-    background: var(--giallo);
-    transition: width 0.4s ease, background 0.4s ease;
-  }
-
-  .stats-row {
-    background: var(--blu-scuro);
-    display: flex;
-    margin: 0 -24px;
-  }
-
-  .stat-box {
-    flex: 1;
-    padding: 14px 24px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
-  .stat-box:last-child { border-right: none; }
-
-  .stat-box-label {
-    font-size: 12px;
+  /* Pulsante ricarica accanto al saldo */
+  .btn-ricarica-hero {
+    background: var(--verde-bg);
+    color: var(--verde);
+    border: 2px solid var(--verde);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 4px;
-    font-weight: 600;
+    letter-spacing: 0.04em;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    flex-shrink: 0; margin-left: 12px; margin-top: 4px;
+    white-space: nowrap;
   }
+  .btn-ricarica-hero:active { background: var(--verde); color: #fff; }
+  .btn-ricarica-hero .icona { font-size: 22px; line-height: 1; font-weight: 400; }
 
-  .stat-box-value {
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
-  }
+  .saldo-avviso { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.6); margin-top: 8px; margin-bottom: 16px; min-height: 22px; }
+  .barra-track { height: 6px; background: rgba(255,255,255,0.15); margin: 0 -24px; }
+  #barra-fill { height: 6px; background: var(--giallo); transition: width 0.4s ease, background 0.4s ease; }
 
-  /* Form spesa */
-  .form-spesa {
+  .stats-row { background: var(--blu-scuro); display: flex; margin: 0 -24px; }
+  .stat-box { flex: 1; padding: 12px 16px; border-right: 1px solid rgba(255,255,255,0.08); }
+  .stat-box:last-child { border-right: none; }
+  .stat-box-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 4px; font-weight: 600; }
+  .stat-box-value { font-size: 16px; font-weight: 700; color: #fff; }
+
+  /* PULSANTE SPESA FULLWIDTH */
+  .azione-spesa-row {
+    padding: 14px 24px;
     background: var(--bianco);
     border-bottom: 2px solid var(--border);
-    padding: 20px 24px;
     flex-shrink: 0;
   }
 
-  .form-titolo {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--blu);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .btn-spesa-full {
+    background: var(--giallo); color: var(--blu-scuro); border: none;
+    border-radius: 12px; padding: 18px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 19px; font-weight: 700; cursor: pointer;
+    width: 100%; text-transform: uppercase; letter-spacing: 0.04em;
+    -webkit-tap-highlight-color: transparent; transition: background 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
   }
-  .form-titolo::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .btn-spesa-full:active { background: var(--giallo-scuro); }
+  .btn-spesa-full .icona { font-size: 24px; font-weight: 400; line-height: 1; }
+
+  /* FILTRO MESI */
+  .filtro-mesi-wrap {
+    background: var(--bianco);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .filtro-mesi {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 16px;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+  .filtro-mesi::-webkit-scrollbar { display: none; }
+
+  .mese-btn {
+    border: 2px solid var(--border);
+    border-radius: 20px; padding: 7px 16px;
+    font-size: 14px; font-weight: 700;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer; background: var(--sfondo); color: var(--muted);
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent; transition: all 0.12s;
+    flex-shrink: 0;
+  }
+  .mese-btn.attivo { background: var(--blu); color: #fff; border-color: var(--blu); }
+
+  /* LISTA */
+  .lista-header {
+    padding: 13px 24px 9px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    background: var(--sfondo); border-bottom: 1px solid var(--border);
+  }
+
+  #lista-movimenti { padding-bottom: 110px; }
+
+  .vuoto {
+    text-align: center; color: var(--muted);
+    font-size: 17px; padding: 40px 24px; line-height: 1.7;
+  }
+
+  .mese-gruppo-header {
+    padding: 10px 24px;
+    background: var(--sfondo);
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    font-size: 13px; font-weight: 700; color: var(--blu);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .mese-gruppo-totale { font-size: 13px; color: var(--rosso); font-weight: 700; }
+
+  .mov-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 15px 24px; border-bottom: 1px solid var(--border);
+    background: var(--bianco); animation: entra 0.2s ease;
+  }
+
+  @keyframes entra {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .mov-icona {
+    width: 46px; height: 46px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
+  }
+
+  .mov-info { flex: 1; min-width: 0; }
+  .mov-desc { font-size: 17px; font-weight: 600; color: var(--testo); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mov-meta { font-size: 13px; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+  .mov-importo { font-size: 19px; font-weight: 700; flex-shrink: 0; }
+  .mov-importo.spesa { color: var(--rosso); }
+  .mov-importo.ricarica { color: var(--verde); }
+
+  .btn-elimina {
+    background: var(--sfondo); border: none; border-radius: 8px;
+    color: var(--muted); font-size: 18px; cursor: pointer;
+    padding: 8px 10px; line-height: 1;
+    -webkit-tap-highlight-color: transparent; flex-shrink: 0;
+  }
+  .btn-elimina:active { background: var(--rosso-bg); color: var(--rosso); }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55); z-index: 100;
+    align-items: flex-end; justify-content: center;
+  }
+  .modal-overlay.aperto { display: flex; }
+
+  .modal-box {
+    background: var(--bianco); border-radius: 20px 20px 0 0;
+    padding: 28px 24px 44px;
+    width: 100%; max-width: 480px;
+  }
+
+  .modal-titolo {
+    font-size: 20px; font-weight: 700; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .btn-chiudi {
+    background: var(--sfondo); border: none; border-radius: 50%;
+    width: 36px; height: 36px; font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); -webkit-tap-highlight-color: transparent;
+  }
+
+  .campo-label {
+    font-size: 13px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+  }
 
   .campo {
-    background: var(--sfondo);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
+    background: var(--sfondo); border: 2px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 18px;
-    color: var(--testo);
-    outline: none;
-    width: 100%;
-    -webkit-appearance: none;
-    transition: border-color 0.15s;
-    margin-bottom: 12px;
+    font-size: 18px; color: var(--testo);
+    outline: none; width: 100%;
+    -webkit-appearance: none; transition: border-color 0.15s;
+    margin-bottom: 14px; display: block;
   }
   .campo:focus { border-color: var(--blu); background: #fff; }
   .campo::placeholder { color: #aab5c0; }
@@ -313,210 +305,54 @@
   .campo::-webkit-outer-spin-button { -webkit-appearance: none; }
 
   .importo-row {
-    display: flex;
-    align-items: center;
-    background: var(--sfondo);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 14px;
-    gap: 8px;
-    transition: border-color 0.15s;
+    display: flex; align-items: center;
+    background: var(--sfondo); border: 2px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+    margin-bottom: 14px; gap: 8px; transition: border-color 0.15s;
   }
   .importo-row:focus-within { border-color: var(--blu); background: #fff; }
-  .importo-row .euro-label {
-    font-size: 22px;
-    color: var(--muted);
-    font-weight: 600;
-    flex-shrink: 0;
-  }
+  .importo-row .euro-label { font-size: 22px; color: var(--muted); font-weight: 600; flex-shrink: 0; }
   .importo-row input {
-    background: transparent;
-    border: none;
-    outline: none;
+    background: transparent; border: none; outline: none;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--testo);
-    width: 100%;
-    -moz-appearance: textfield;
-    text-align: right;
+    font-size: 22px; font-weight: 600; color: var(--testo);
+    width: 100%; -moz-appearance: textfield; text-align: right;
   }
   .importo-row input::placeholder { color: #aab5c0; }
 
-  .cats-wrap {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
+  .cats-wrap { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
 
   .cat-btn {
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 15px;
-    font-weight: 700;
+    border: 2px solid var(--border); border-radius: 8px;
+    padding: 9px 14px; font-size: 15px; font-weight: 700;
     font-family: 'Titillium Web', sans-serif;
-    cursor: pointer;
-    background: var(--sfondo);
-    color: var(--muted);
-    -webkit-tap-highlight-color: transparent;
-    transition: all 0.12s;
+    cursor: pointer; background: var(--sfondo); color: var(--muted);
+    -webkit-tap-highlight-color: transparent; transition: all 0.12s;
   }
-  .cat-btn.attiva {
-    background: var(--blu);
-    color: #fff;
-    border-color: var(--blu);
-  }
+  .cat-btn.attiva { background: var(--blu); color: #fff; border-color: var(--blu); }
 
-  .btn-registra {
-    background: var(--blu);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 18px;
+  .btn-conferma {
+    border: none; border-radius: 10px; padding: 18px;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 19px;
-    font-weight: 700;
-    cursor: pointer;
-    width: 100%;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    -webkit-tap-highlight-color: transparent;
-    transition: background 0.15s;
+    font-size: 19px; font-weight: 700; cursor: pointer;
+    width: 100%; text-transform: uppercase; letter-spacing: 0.04em;
+    -webkit-tap-highlight-color: transparent; transition: background 0.15s;
   }
-  .btn-registra:active { background: var(--blu-scuro); }
+  .btn-conferma-spesa { background: var(--rosso); color: #fff; }
+  .btn-conferma-spesa:active { background: #8b1a1a; }
+  .btn-conferma-ricarica { background: var(--verde); color: #fff; }
+  .btn-conferma-ricarica:active { background: #0f4a28; }
 
-  /* Lista */
-  .lista-header {
-    padding: 14px 24px 10px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: var(--sfondo);
-    border-bottom: 1px solid var(--border);
-  }
-
-  #lista-spese {
-    padding-bottom: 100px;
-  }
-
-  .vuoto {
-    text-align: center;
-    color: var(--muted);
-    font-size: 17px;
-    padding: 40px 24px;
-    line-height: 1.6;
-  }
-
-  .spesa-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bianco);
-    animation: entra 0.2s ease;
-  }
-
-  @keyframes entra {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .cat-icona {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-
-  .spesa-info { flex: 1; min-width: 0; }
-
-  .spesa-desc {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--testo);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .spesa-cat {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-  }
-
-  .spesa-importo {
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--rosso);
-    flex-shrink: 0;
-  }
-
-  .btn-elimina {
-    background: #f5eaea;
-    border: none;
-    border-radius: 8px;
-    color: var(--rosso);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 6px 10px;
-    line-height: 1;
-    -webkit-tap-highlight-color: transparent;
-    flex-shrink: 0;
-  }
-  .btn-elimina:active { background: #f0d0d0; }
-
-  /* Footer */
+  /* FOOTER FISSO */
   .footer {
     background: var(--blu-scuro);
-    padding: 14px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-width: 480px;
-    margin: 0 auto;
+    padding: 16px 24px 32px;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    max-width: 480px; margin: 0 auto; z-index: 5;
+    display: flex; align-items: center; justify-content: center;
   }
 
-  .footer span {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 0.04em;
-  }
-
-  .btn-azzera {
-    background: transparent;
-    border: 2px solid rgba(255,209,0,0.4);
-    border-radius: 8px;
-    color: var(--giallo);
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 8px 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .btn-azzera:active { background: rgba(255,209,0,0.1); }
+  #screen-main { display: none; flex-direction: column; flex: 1; }
 </style>
 </head>
 <body>
@@ -534,23 +370,23 @@
     </div>
     <span class="topbar-name">Il Mio Saldo ADI</span>
   </div>
-   <span class="topbar-sub"></span>
+  <span class="topbar-sub">Servizio</span>
 </div>
 
 <!-- SETUP -->
 <div id="screen-setup">
   <div class="setup-hero">
-    <h1>Benvenuta Raffaella!</h1>
-    <p>Inserisci il saldo della tua PostePay per iniziare a monitorarlo.</p>
+    <h1>Benvenuto!</h1>
+    <p>Inserisci il saldo attuale della tua PostePay per iniziare a monitorarlo.</p>
   </div>
   <div class="setup-body">
-    <div class="big-label">Quanto hai sulla carta ADI?</div>
+    <div class="big-label">Quanto hai sul conto adesso?</div>
     <div class="input-grande" id="input-grande-wrap">
       <span class="simbolo">€</span>
       <input type="number" id="setup-input" inputmode="decimal" placeholder="000.00" step="0.01" min="0" />
     </div>
     <div class="info-box">
-      <p>Puoi trovare il saldo chiamando il <strong>0645266888</strong>.</p>
+      <p>Puoi trovare il saldo all'ATM oppure chiamando il numero gratuito <strong>800.003.322</strong>.</p>
     </div>
     <button class="btn-grande" onclick="doSetup()">Inizia a monitorare</button>
   </div>
@@ -558,61 +394,113 @@
 
 <!-- MAIN -->
 <div id="screen-main">
+
+  <!-- Saldo hero con ricarica accanto -->
   <div class="saldo-hero">
-    <div class="saldo-label">Il tuo saldo disponibile</div>
-    <div id="display-saldo">€0,00</div>
+    <div class="saldo-top-row">
+      <div class="saldo-label-col">
+        <div class="saldo-label">Il tuo saldo disponibile</div>
+        <div id="display-saldo">€0,00</div>
+      </div>
+      <button class="btn-ricarica-hero" onclick="apriModal('ricarica')">
+        <span class="icona">+</span>
+        Ricarica
+      </button>
+    </div>
     <div class="saldo-avviso" id="avviso-testo"></div>
     <div class="barra-track">
       <div id="barra-fill" style="width:100%;"></div>
     </div>
     <div class="stats-row">
       <div class="stat-box">
-        <div class="stat-box-label">Saldo iniziale</div>
+        <div class="stat-box-label">Iniziale</div>
         <div class="stat-box-value" id="stat-iniziale">€0,00</div>
       </div>
       <div class="stat-box">
-        <div class="stat-box-label">Speso finora</div>
+        <div class="stat-box-label">Speso</div>
         <div class="stat-box-value" id="stat-speso" style="color:#FFD100;">€0,00</div>
       </div>
+
     </div>
   </div>
 
-  <div class="form-spesa">
-    <div class="form-titolo">Aggiungi una spesa</div>
-    <input class="campo" type="text" id="exp-desc" placeholder="Cosa hai comprato?" />
-    <div class="importo-row">
-      <span class="euro-label">€</span>
-      <input type="number" id="exp-amount" inputmode="decimal" placeholder="0,00" step="0.01" min="0.01" />
-    </div>
-    <div class="cats-wrap" id="cat-btns"></div>
-    <button class="btn-registra" onclick="doAdd()">Aggiungi spesa</button>
+  <!-- Filtro mesi -->
+  <div class="filtro-mesi-wrap">
+    <div class="filtro-mesi" id="filtro-mesi"></div>
   </div>
 
-  <div class="lista-header">Le tue spese</div>
-  <div id="lista-spese"></div>
+  <div class="lista-header">Movimenti</div>
+  <div id="lista-movimenti"></div>
 
   <div class="footer">
-    <span>© 2025 Il Mio Saldo ADI</span>
-    <button class="btn-azzera" onclick="doReset()">Ricomincia</button>
+    <button class="btn-spesa-full" onclick="apriModal('spesa')">
+      Aggiungi spesa
+    </button>
+  </div>
+</div>
+
+<!-- MODAL SPESA -->
+<div class="modal-overlay" id="modal-spesa">
+  <div class="modal-box">
+    <div class="modal-titolo">
+      <span style="color:var(--rosso);">Aggiungi spesa</span>
+      <button class="btn-chiudi" onclick="chiudiModal('spesa')">✕</button>
+    </div>
+    <div class="campo-label">Descrizione</div>
+    <input class="campo" type="text" id="s-desc" placeholder="Cosa hai comprato?" />
+    <div class="campo-label">Importo</div>
+    <div class="importo-row">
+      <span class="euro-label">€</span>
+      <input type="number" id="s-amount" inputmode="decimal" placeholder="0,00" step="0.01" min="0.01" />
+    </div>
+    <div class="campo-label">Data</div>
+    <input class="campo" type="date" id="s-data" />
+    <div class="campo-label">Categoria</div>
+    <div class="cats-wrap" id="cat-btns"></div>
+    <button class="btn-conferma btn-conferma-spesa" onclick="doAddSpesa()">Registra spesa</button>
+  </div>
+</div>
+
+<!-- MODAL RICARICA -->
+<div class="modal-overlay" id="modal-ricarica">
+  <div class="modal-box">
+    <div class="modal-titolo">
+      <span style="color:var(--verde);">Carta ricaricata</span>
+      <button class="btn-chiudi" onclick="chiudiModal('ricarica')">✕</button>
+    </div>
+    <div class="campo-label">Importo ricaricato</div>
+    <div class="importo-row">
+      <span class="euro-label">€</span>
+      <input type="number" id="r-amount" inputmode="decimal" placeholder="0,00" step="0.01" min="0.01" />
+    </div>
+    <div class="campo-label">Data ricarica</div>
+    <input class="campo" type="date" id="r-data" />
+    <div class="campo-label">Note (opzionale)</div>
+    <input class="campo" type="text" id="r-desc" placeholder="Es: Ricarica mensile ADI" />
+    <button class="btn-conferma btn-conferma-ricarica" onclick="doAddRicarica()">Conferma ricarica</button>
   </div>
 </div>
 
 <script>
 const CATS = [
-  { id:'spesa',      label:'Spesa',      bg:'#e8f5ee', color:'#1a6e3e' },
-  { id:'farmacia',   label:'Farmacia',   bg:'#fce8e8', color:'#8b1a1a' },
-  { id:'bollette',   label:'Bollette',   bg:'#e8f0fb', color:'#003f88' },
-  { id:'trasporti',  label:'Affitto',  bg:'#f0eefe', color:'#4b3f9a' },
-  { id:'prelievo',      label:'Prelievo',      bg:'#f0f2f4', color:'#444444' },
-  { id:'vestiti',      label:'Vestiti',      bg:'#f0f2f4', color:'#444444' },
+  { id:'affitto',  label:'Affitto',  bg:'#e8f0fb', color:'#003f88' },
+  { id:'spesa',    label:'Spesa',    bg:'#e4f5ec', color:'#1a6e3e' },
+  { id:'prelievo', label:'Prelievo', bg:'#f5f0e8', color:'#7a5000' },
+  { id:'salute',   label:'Salute',   bg:'#fce8e8', color:'#8b1a1a' },
+  { id:'vestiti',  label:'Vestiti',  bg:'#f0eefe', color:'#4b3f9a' },
+  { id:'bollette', label:'Bollette', bg:'#f0f2f4', color:'#333333' },
 ];
 
-const KEY = 'adi_saldo_v1';
+const MESI_NOMI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                   'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+
+const KEY = 'adi_v3';
 let stato = carica();
+let meseFiltro = 'tutti';
 
 function carica() {
   try { const d = localStorage.getItem(KEY); if (d) return JSON.parse(d); } catch(e){}
-  return { iniziale: 0, spese: [], cat: 'spesa', avviato: false };
+  return { iniziale: 0, movimenti: [], cat: 'spesa', avviato: false };
 }
 
 function salva() {
@@ -624,7 +512,28 @@ function fmt(n) {
   return (n < 0 ? '-' : '') + '€' + abs;
 }
 
-function getCat(id) { return CATS.find(c => c.id === id) || CATS[4]; }
+function fmtData(str) {
+  if (!str) return '';
+  const [y, m, d] = str.split('-');
+  return d + '/' + m + '/' + y;
+}
+
+function chiaveMese(dataStr) {
+  if (!dataStr) return '';
+  const [y, m] = dataStr.split('-');
+  return y + '-' + m;
+}
+
+function nomeMese(chiave) {
+  const [y, m] = chiave.split('-');
+  return MESI_NOMI[parseInt(m) - 1] + ' ' + y;
+}
+
+function oggiISO() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function getCat(id) { return CATS.find(c => c.id === id) || CATS[1]; }
 
 function renderCats() {
   document.getElementById('cat-btns').innerHTML = CATS.map(c =>
@@ -634,13 +543,30 @@ function renderCats() {
 
 function selCat(id) { stato.cat = id; salva(); renderCats(); }
 
+function apriModal(tipo) {
+  if (tipo === 'spesa') {
+    document.getElementById('s-data').value = oggiISO();
+    renderCats();
+    document.getElementById('modal-spesa').classList.add('aperto');
+    setTimeout(() => document.getElementById('s-desc').focus(), 150);
+  } else {
+    document.getElementById('r-data').value = oggiISO();
+    document.getElementById('modal-ricarica').classList.add('aperto');
+    setTimeout(() => document.getElementById('r-amount').focus(), 150);
+  }
+}
+
+function chiudiModal(tipo) {
+  document.getElementById('modal-' + tipo).classList.remove('aperto');
+}
+
 function doSetup() {
   const v = parseFloat(document.getElementById('setup-input').value.replace(',', '.'));
   if (isNaN(v) || v <= 0) {
     document.getElementById('input-grande-wrap').classList.add('errore');
     return;
   }
-  stato = { iniziale: v, spese: [], cat: 'spesa', avviato: true };
+  stato = { iniziale: v, movimenti: [], cat: 'spesa', avviato: true };
   salva();
   mostraMain();
 }
@@ -649,22 +575,38 @@ function mostraMain() {
   document.getElementById('screen-setup').style.display = 'none';
   document.getElementById('screen-main').style.display = 'flex';
   document.getElementById('screen-main').style.flexDirection = 'column';
+  meseFiltro = 'tutti';
   render();
 }
 
-function doAdd() {
-  const desc = document.getElementById('exp-desc').value.trim();
-  const amount = parseFloat(document.getElementById('exp-amount').value.replace(',', '.'));
+function doAddSpesa() {
+  const desc = document.getElementById('s-desc').value.trim();
+  const amount = parseFloat(document.getElementById('s-amount').value.replace(',', '.'));
+  const data = document.getElementById('s-data').value || oggiISO();
   if (!desc || isNaN(amount) || amount <= 0) return;
-  stato.spese.unshift({ id: Date.now(), desc, amount, cat: stato.cat });
-  document.getElementById('exp-desc').value = '';
-  document.getElementById('exp-amount').value = '';
+  stato.movimenti.unshift({ id: Date.now(), tipo: 'spesa', desc, amount, cat: stato.cat, data });
+  document.getElementById('s-desc').value = '';
+  document.getElementById('s-amount').value = '';
+  chiudiModal('spesa');
+  salva();
+  render();
+}
+
+function doAddRicarica() {
+  const amount = parseFloat(document.getElementById('r-amount').value.replace(',', '.'));
+  const data = document.getElementById('r-data').value || oggiISO();
+  const desc = document.getElementById('r-desc').value.trim() || 'Ricarica ADI';
+  if (isNaN(amount) || amount <= 0) return;
+  stato.movimenti.unshift({ id: Date.now(), tipo: 'ricarica', desc, amount, data });
+  document.getElementById('r-amount').value = '';
+  document.getElementById('r-desc').value = '';
+  chiudiModal('ricarica');
   salva();
   render();
 }
 
 function doRemove(id) {
-  stato.spese = stato.spese.filter(e => e.id !== id);
+  stato.movimenti = stato.movimenti.filter(m => m.id !== id);
   salva();
   render();
 }
@@ -672,23 +614,26 @@ function doRemove(id) {
 function doReset() {
   if (!confirm('Vuoi ricominciare da capo?\nTutti i dati verranno cancellati.')) return;
   localStorage.removeItem(KEY);
-  stato = { iniziale: 0, spese: [], cat: 'spesa', avviato: false };
+  stato = { iniziale: 0, movimenti: [], cat: 'spesa', avviato: false };
   document.getElementById('screen-main').style.display = 'none';
   document.getElementById('screen-setup').style.display = 'flex';
   document.getElementById('setup-input').value = '';
 }
 
 function render() {
-  const speso = stato.spese.reduce((s, e) => s + e.amount, 0);
-  const rimanente = stato.iniziale - speso;
-  const pct = stato.iniziale > 0 ? Math.max(0, Math.min(100, (rimanente / stato.iniziale) * 100)) : 0;
+  // Calcoli globali sempre su tutti i movimenti
+  const totSpeso = stato.movimenti.filter(m => m.tipo === 'spesa').reduce((s, m) => s + m.amount, 0);
+  const totRicariche = stato.movimenti.filter(m => m.tipo === 'ricarica').reduce((s, m) => s + m.amount, 0);
+  const saldo = stato.iniziale + totRicariche - totSpeso;
+  const riferimento = stato.iniziale + totRicariche;
+  const pct = riferimento > 0 ? Math.max(0, Math.min(100, (saldo / riferimento) * 100)) : 0;
 
   const el = document.getElementById('display-saldo');
-  el.textContent = fmt(rimanente);
-  el.style.color = rimanente < 0 ? '#ffaaaa' : '#ffffff';
+  el.textContent = fmt(saldo);
+  el.style.color = saldo < 0 ? '#ffaaaa' : '#ffffff';
 
   const avviso = document.getElementById('avviso-testo');
-  if (rimanente < 0) {
+  if (saldo < 0) {
     avviso.textContent = 'Attenzione: hai superato il saldo!';
     avviso.style.color = '#ffaaaa';
   } else if (pct < 20) {
@@ -699,32 +644,91 @@ function render() {
   }
 
   document.getElementById('stat-iniziale').textContent = fmt(stato.iniziale);
-  document.getElementById('stat-speso').textContent = fmt(speso);
+  document.getElementById('stat-speso').textContent = fmt(totSpeso);
+
 
   const fill = document.getElementById('barra-fill');
   fill.style.width = pct.toFixed(1) + '%';
   fill.style.background = pct > 40 ? '#FFD100' : pct > 20 ? '#ff9f43' : '#e74c3c';
 
-  const lista = document.getElementById('lista-spese');
-  if (stato.spese.length === 0) {
-    lista.innerHTML = '<div class="vuoto">Non hai ancora registrato<br>nessuna spesa.</div>';
+  // Mesi disponibili dai movimenti
+  const mesiSet = new Set(stato.movimenti.map(m => chiaveMese(m.data)).filter(Boolean));
+  const mesiOrdinati = Array.from(mesiSet).sort((a, b) => b.localeCompare(a));
+
+  // Filtro mesi
+  const filtroEl = document.getElementById('filtro-mesi');
+  if (mesiOrdinati.length > 0) {
+    filtroEl.innerHTML =
+      `<button class="mese-btn${meseFiltro === 'tutti' ? ' attivo' : ''}" onclick="setMese('tutti')">Tutti</button>` +
+      mesiOrdinati.map(m =>
+        `<button class="mese-btn${meseFiltro === m ? ' attivo' : ''}" onclick="setMese('${m}')">${nomeMese(m)}</button>`
+      ).join('');
   } else {
-    lista.innerHTML = stato.spese.map(e => {
-      const cat = getCat(e.cat);
-      const sigla = cat.label.substring(0, 2).toUpperCase();
-      return `<div class="spesa-item">
-        <div class="cat-icona" style="background:${cat.bg}; color:${cat.color};">${sigla}</div>
-        <div class="spesa-info">
-          <div class="spesa-desc">${e.desc}</div>
-          <div class="spesa-cat">${cat.label}</div>
-        </div>
-        <span class="spesa-importo">-${fmt(e.amount).replace(/^-?€/, '€')}</span>
-        <button class="btn-elimina" onclick="doRemove(${e.id})">✕</button>
-      </div>`;
-    }).join('');
+    filtroEl.innerHTML = '';
   }
 
-  renderCats();
+  // Movimenti filtrati
+  const movFiltrati = meseFiltro === 'tutti'
+    ? stato.movimenti
+    : stato.movimenti.filter(m => chiaveMese(m.data) === meseFiltro);
+
+  const lista = document.getElementById('lista-movimenti');
+
+  if (movFiltrati.length === 0) {
+    lista.innerHTML = '<div class="vuoto">Non hai ancora registrato<br>nessun movimento.</div>';
+    return;
+  }
+
+  // Raggruppa per mese
+  const gruppi = {};
+  movFiltrati.forEach(m => {
+    const k = chiaveMese(m.data) || 'altro';
+    if (!gruppi[k]) gruppi[k] = [];
+    gruppi[k].push(m);
+  });
+
+  const chiavi = Object.keys(gruppi).sort((a, b) => b.localeCompare(a));
+
+  lista.innerHTML = chiavi.map(k => {
+    const movs = gruppi[k];
+    const speseMese = movs.filter(m => m.tipo === 'spesa').reduce((s, m) => s + m.amount, 0);
+    const intestazione = k === 'altro' ? 'Data non specificata' : nomeMese(k);
+
+    const righe = movs.map(m => {
+      if (m.tipo === 'ricarica') {
+        return `<div class="mov-item">
+          <div class="mov-icona" style="background:var(--verde-bg); color:var(--verde);">RIC</div>
+          <div class="mov-info">
+            <div class="mov-desc">${m.desc}</div>
+            <div class="mov-meta">Ricarica · ${fmtData(m.data)}</div>
+          </div>
+          <span class="mov-importo ricarica">+${fmt(m.amount)}</span>
+          <button class="btn-elimina" onclick="doRemove(${m.id})">✕</button>
+        </div>`;
+      }
+      const cat = getCat(m.cat);
+      const sigla = cat.label.substring(0, 3).toUpperCase();
+      return `<div class="mov-item">
+        <div class="mov-icona" style="background:${cat.bg}; color:${cat.color};">${sigla}</div>
+        <div class="mov-info">
+          <div class="mov-desc">${m.desc}</div>
+          <div class="mov-meta">${cat.label} · ${fmtData(m.data)}</div>
+        </div>
+        <span class="mov-importo spesa">-${fmt(m.amount).replace(/^-?€/, '€')}</span>
+        <button class="btn-elimina" onclick="doRemove(${m.id})">✕</button>
+      </div>`;
+    }).join('');
+
+    return `<div class="mese-gruppo-header">
+      <span>${intestazione}</span>
+      ${speseMese > 0 ? `<span class="mese-gruppo-totale">Spese: ${fmt(speseMese)}</span>` : ''}
+    </div>${righe}`;
+  }).join('');
+}
+
+function setMese(m) {
+  meseFiltro = m;
+  render();
 }
 
 if (stato.avviato && stato.iniziale > 0) {
